@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Etiquetas para el icono en la pantalla de inicio -->
+    <link rel="icon" type="image/png" href="assets/icono.png">
+    <link rel="apple-touch-icon" href="assets/icono.png">
+    
+    <!-- Configuración para parecer una App Nativa (Especialmente en iOS) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Radioterapia">
+
     <title>Servicio de Oncología Radioterápica</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -32,14 +42,30 @@
             <!-- ========================================== -->
             <section id="view-home" class="app-view flex-1 flex flex-col justify-center">
                 <div class="text-center mb-10">
-                    <!-- Imagen del Logo -->
-                    <!-- Se ha añadido un onerror por si la imagen no existe aún en la carpeta, muestre un recuadro de texto -->
-                    <img src="assets/SacylLogo.svg" alt="Logo Sacyl" class="h-24 mx-auto mb-6 object-contain"
-                         onerror="this.style.display='none'; document.getElementById('logo-fallback').classList.remove('hidden');">
-                    
-                    <!-- Fallback en caso de que no se encuentre el logo -->
-                    <div id="logo-fallback" class="hidden w-24 h-24 bg-blue-50 text-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl border-4 border-blue-100">
-                        SACYL
+                    <!-- Contenedor de Logos (Lado a lado) -->
+                    <div class="flex justify-center items-center gap-6 mb-6">
+                        
+                        <!-- Logo Sacyl -->
+                        <div>
+                            <img src="assets/SacylLogo.svg" alt="Logo Sacyl" class="h-20 sm:h-24 object-contain"
+                                 onerror="this.style.display='none'; document.getElementById('logo-fallback').classList.remove('hidden');">
+                            
+                            <!-- Fallback en caso de que no se encuentre el logo Sacyl -->
+                            <div id="logo-fallback" class="hidden w-20 h-20 sm:w-24 sm:h-24 bg-blue-50 text-blue-700 rounded-full flex items-center justify-center font-bold text-sm sm:text-xl border-4 border-blue-100 mx-auto">
+                                SACYL
+                            </div>
+                        </div>
+
+                        <!-- Icono de la App -->
+                        <div>
+                            <img src="assets/icono.png" alt="Icono App" class="h-20 sm:h-24 object-contain rounded-2xl shadow-sm"
+                                 onerror="this.style.display='none'; document.getElementById('icon-fallback').classList.remove('hidden');">
+                            
+                            <!-- Fallback en caso de que no se encuentre el icono -->
+                            <div id="icon-fallback" class="hidden w-20 h-20 sm:w-24 sm:h-24 bg-gray-50 text-gray-400 rounded-2xl flex items-center justify-center border-4 border-gray-100 mx-auto">
+                                <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                        </div>
                     </div>
 
                     <h1 class="text-2xl font-bold text-gray-900 leading-tight">
@@ -49,7 +75,7 @@
                 </div>
 
                 <div class="space-y-4 w-full px-2">
-                    <button onclick="navigateTo('view-construction')" class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 text-gray-700 font-semibold py-4 px-6 rounded-2xl transition-all active:scale-95">
+                    <button onclick="navigateTo('view-documentation')" class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 text-gray-700 font-semibold py-4 px-6 rounded-2xl transition-all active:scale-95">
                         <span class="flex items-center gap-3">
                             <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                             Documentación
@@ -84,6 +110,102 @@
             </section>
 
             <!-- ========================================== -->
+            <!-- VISTA 5: MENÚ DE DOCUMENTACIÓN             -->
+            <!-- ========================================== -->
+            <section id="view-documentation" class="app-view view-hidden flex-1 flex flex-col">
+                <div class="mb-6 flex items-center gap-3">
+                    <button onclick="navigateTo('view-home')" class="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-gray-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <h2 class="text-xl font-bold text-gray-800">Documentación</h2>
+                </div>
+
+                <div class="space-y-3 flex-1 overflow-y-auto">
+                    <!-- Botón a Teléfonos -->
+                    <button onclick="navigateTo('view-telefonos')" class="w-full text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 font-medium py-4 px-5 rounded-xl transition-all flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            Teléfonos
+                        </span>
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Botón a Instrucciones de instalación -->
+                    <button onclick="navigateTo('view-install-instructions')" class="w-full text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 font-medium py-4 px-5 rounded-xl transition-all flex items-center justify-between">
+                        <span class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Instrucciones de instalación
+                        </span>
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VISTA 6: DIRECTORIO DE TELÉFONOS           -->
+            <!-- ========================================== -->
+            <section id="view-telefonos" class="app-view view-hidden flex-1 flex flex-col">
+                <div class="mb-6 flex items-center gap-3">
+                    <button onclick="navigateTo('view-documentation')" class="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-gray-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <h2 class="text-xl font-bold text-gray-800">Directorio Telefónico</h2>
+                </div>
+
+                <div class="flex-1 overflow-y-auto bg-white rounded-xl border border-gray-100 shadow-sm mb-4">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-blue-50 sticky top-0">
+                            <tr>
+                                <th class="py-3 px-4 text-sm font-semibold text-blue-800 border-b border-blue-100">Contacto / Depto.</th>
+                                <th class="py-3 px-4 text-sm font-semibold text-blue-800 border-b border-blue-100 text-right">Extensión</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 text-sm">
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Acelerador</td><td class="py-3 px-4 text-right text-gray-600">48911</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">TAC</td><td class="py-3 px-4 text-right text-gray-600">48840</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Dra. Vega</td><td class="py-3 px-4 text-right text-gray-600">48812</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Dra. Gil</td><td class="py-3 px-4 text-right text-gray-600">48814</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Dr. Pires</td><td class="py-3 px-4 text-right text-gray-600">48982</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Dra. Alberca</td><td class="py-3 px-4 text-right text-gray-600">48802</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Radiofísica</td><td class="py-3 px-4 text-right text-gray-600">48998</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Planificación</td><td class="py-3 px-4 text-right text-gray-600">48863</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Secretaría</td><td class="py-3 px-4 text-right text-gray-600">48999</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Supervisora</td><td class="py-3 px-4 text-right text-gray-600">48907</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Control Celadores</td><td class="py-3 px-4 text-right text-gray-600">48909</td></tr>
+                            <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium text-gray-800">Mantenim.</td><td class="py-3 px-4 text-right text-gray-600">169163</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- VISTA 7: INSTRUCCIONES DE INSTALACIÓN      -->
+            <!-- ========================================== -->
+            <section id="view-install-instructions" class="app-view view-hidden flex-1 flex flex-col">
+                <div class="mb-6 flex items-center gap-3">
+                    <button onclick="navigateTo('view-documentation')" class="p-2 bg-gray-50 text-gray-600 rounded-lg hover:bg-gray-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <h2 class="text-xl font-bold text-gray-800">Instrucciones</h2>
+                </div>
+
+                <div class="flex-1 overflow-y-auto">
+                    <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 space-y-6">
+                        <h3 class="text-lg font-bold text-blue-800 border-b border-blue-100 pb-2">Instrucciones de instalación</h3>
+                        
+                        <div class="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+                            <p>
+                                <strong class="text-gray-900">En Android (Chrome):</strong> Abre el enlace, toca los 3 puntitos arriba a la derecha y selecciona <em class="italic text-blue-700 font-medium">"Añadir a la pantalla de inicio"</em>.
+                            </p>
+                            <p>
+                                <strong class="text-gray-900">En iOS (Safari):</strong> Abre el enlace, toca el botón de "Compartir" (el cuadrado con la flecha hacia arriba) y selecciona <em class="italic text-blue-700 font-medium">"Añadir a la pantalla de inicio"</em>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
             <!-- VISTA 3: MENÚ DE CALCULADORAS              -->
             <!-- ========================================== -->
             <section id="view-calculators" class="app-view view-hidden flex-1 flex flex-col">
@@ -100,7 +222,19 @@
                         Calculadora volumen vejiga
                         <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                     </button>
+
+                    <!-- Botón a Calculadora BED (Externa) -->
+                    <button onclick="window.open('https://www.radformation.com/tools/bed-calculator', '_blank')" class="w-full text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 font-medium py-4 px-5 rounded-xl transition-all flex items-center justify-between">
+                        Cálculo BED (Externo)
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </button>
                     
+                    <!-- Botón a Calculadoras Radioterapia MDCalc (Externa) -->
+                    <button onclick="window.open('https://www.mdcalc.com/specialties/Radiation%20Oncology', '_blank')" class="w-full text-left bg-blue-50 hover:bg-blue-100 border border-blue-100 text-blue-900 font-medium py-4 px-5 rounded-xl transition-all flex items-center justify-between">
+                        Calculadoras Radioterapia (Externo)
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </button>
+
                     <!-- Aquí se pueden añadir más botones en el futuro -->
                 </div>
             </section>
@@ -146,13 +280,27 @@
 
                 <!-- Contenedor del Resultado Vejiga -->
                 <div id="bladderResultContainer" class="mt-6 p-4 bg-blue-50 rounded-2xl border border-blue-100 hidden">
-                    <p class="text-xs font-semibold text-blue-600 uppercase tracking-wider text-center">Volumen Calculado</p>
-                    <p class="text-3xl font-extrabold text-blue-700 text-center mt-1">
-                        <span id="bladderResult">0.00</span> <span class="text-xl font-semibold text-blue-500">cm³</span>
+                    <p id="resultTitle" class="text-xs font-semibold text-blue-600 uppercase tracking-wider text-center">Volumen Calculado</p>
+                    <p class="text-3xl font-extrabold text-center mt-1">
+                        <span id="bladderResult" class="text-blue-700">0.00</span> <span id="resultUnit" class="text-xl font-semibold text-blue-500">cm³</span>
                     </p>
                 </div>
             </section>
 
+        </div>
+
+        <!-- Modal de Alerta (Ventana Emergente Customizada) -->
+        <div id="alertModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 flex items-center justify-center p-4 view-hidden">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center">
+                <div class="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-red-100 mb-4">
+                    <svg class="h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Aviso de volumen</h3>
+                <p id="alertModalText" class="text-base text-gray-600 mb-6"></p>
+                <button onclick="closeModal()" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-xl transition-all shadow-lg shadow-red-200">
+                    Entendido
+                </button>
+            </div>
         </div>
     </main>
 
@@ -181,6 +329,18 @@
         }
 
         /**
+         * Funciones del Modal de Alerta
+         */
+        function closeModal() {
+            document.getElementById('alertModal').classList.add('view-hidden');
+        }
+
+        function showModal(mensaje) {
+            document.getElementById('alertModalText').innerText = mensaje;
+            document.getElementById('alertModal').classList.remove('view-hidden');
+        }
+
+        /**
          * Lógica de la Calculadora de Vejiga
          */
         const bladderForm = document.getElementById('bladderForm');
@@ -196,9 +356,42 @@
             // FÓRMULA: 1/6 * PI * X * Y * Z
             const volumen = (1 / 6) * Math.PI * x * y * z;
 
+            // Elementos de UI a actualizar
+            const container = document.getElementById('bladderResultContainer');
+            const title = document.getElementById('resultTitle');
+            const resultSpan = document.getElementById('bladderResult');
+            const unitSpan = document.getElementById('resultUnit');
+
             // Mostrar resultado formateado a 2 decimales
-            document.getElementById('bladderResult').innerText = volumen.toLocaleString('es-ES', { maximumFractionDigits: 2 });
-            document.getElementById('bladderResultContainer').classList.remove('hidden');
+            resultSpan.innerText = volumen.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+            
+            // Limpiar clases base del contenedor de resultado
+            container.className = "mt-6 p-4 rounded-2xl border"; 
+            
+            // Lógica de colores y alertas
+            if (volumen < 150) {
+                container.classList.add('bg-red-50', 'border-red-200');
+                title.className = "text-xs font-semibold text-red-600 uppercase tracking-wider text-center";
+                resultSpan.className = "text-red-700";
+                unitSpan.className = "text-xl font-semibold text-red-500";
+                
+                showModal("Volumen de vejiga por debajo del valor mínimo de 150 cm³");
+            } else if (volumen > 250) {
+                container.classList.add('bg-red-50', 'border-red-200');
+                title.className = "text-xs font-semibold text-red-600 uppercase tracking-wider text-center";
+                resultSpan.className = "text-red-700";
+                unitSpan.className = "text-xl font-semibold text-red-500";
+                
+                showModal("Volumen de vejiga por encima del valor máximo de 250 cm³");
+            } else {
+                // Rango normal, colores azules
+                container.classList.add('bg-blue-50', 'border-blue-100');
+                title.className = "text-xs font-semibold text-blue-600 uppercase tracking-wider text-center";
+                resultSpan.className = "text-blue-700";
+                unitSpan.className = "text-xl font-semibold text-blue-500";
+            }
+
+            container.classList.remove('hidden');
         });
     </script>
 </body>
